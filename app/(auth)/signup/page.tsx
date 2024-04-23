@@ -1,22 +1,20 @@
-import { SignUpForm } from "@/app/(auth)/signup/form"
-import { validateRequest } from "@/lib/lucia"
-import { redirect } from "next/navigation"
+import { SignUpForm } from "@/app/(auth)/signup/form";
+import { validateRequest } from "@/lib/lucia";
+import { redirect } from "next/navigation";
 
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Signup',
-  description: '',
+  title: "Signup",
+  description: "",
 };
 
 export default async function SignUpPage() {
-  const { user } = await validateRequest()
+  const { user } = await validateRequest();
 
   if (user) {
-    return redirect("/")
+    return redirect("/");
   }
 
-  return (
-      <SignUpForm />
-  )
+  return <SignUpForm />;
 }

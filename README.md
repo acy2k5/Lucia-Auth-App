@@ -1,6 +1,7 @@
 # Username and password authentication template for Next 14
 
 ## Youtube tutorial - username, password authentication
+
 https://www.youtube.com/watch?v=JIIy7VkiTqU
 
 ## Youtube tutorial - email, password with email verification
@@ -8,9 +9,6 @@ https://www.youtube.com/watch?v=JIIy7VkiTqU
 - Checkout to email branch to see this implementation.
 
 https://www.youtube.com/watch?v=2sHsP_8YLHA&t=1s
-
-
-
 
 - Next 14
 - Lucia Auth Package

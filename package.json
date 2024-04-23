@@ -21,6 +21,7 @@
     "clsx": "^2.1.0",
     "docker": "^1.0.0",
     "drizzle-orm": "^0.29.3",
+    "eslint-config-prettier": "^9.1.0",
     "lucia": "^3.0.1",
     "lucide-react": "^0.335.0",
     "next": "14.1.0",
@@ -44,6 +45,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
+    "prettier": "3.2.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

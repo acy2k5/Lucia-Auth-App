@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { validateRequest } from "@/lib/lucia"
-import { redirect } from "next/navigation"
-import { signOut } from "@/actions/auth.actions"
+import { Button } from "@/components/ui/button";
+import { validateRequest } from "@/lib/lucia";
+import { redirect } from "next/navigation";
+import { signOut } from "@/actions/auth.actions";
 
 export default async function Home() {
-  const { user } = await validateRequest()
+  const { user } = await validateRequest();
 
   if (!user) {
-    return redirect("/signup")
+    return redirect("/signup");
   }
 
   return (
@@ -18,5 +18,5 @@ export default async function Home() {
         <Button type="submit">Sign out</Button>
       </form>
     </main>
-  )
+  );
 }
