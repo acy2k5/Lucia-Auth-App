@@ -6,7 +6,7 @@ const commonValidation = {
     confirmation: z.boolean(),
     fullName: z.string(),
     username: z.string().min(4).max(32),
-    email: z.string().max(255).email(),
+    email: z.string().email(),
     password: z.string().min(8).max(64),
 }
 
@@ -52,6 +52,10 @@ export const contactSchema = z.object({
     email: emailSchema,
     subject: z.string().min(1),
     message: z.string().min(10).max(2000),
+})
+
+export const verificatioinSchema = z.object({
+    code: commonValidation.confirmation,
 })
 
 export const userDeletionSchema = z.object({
