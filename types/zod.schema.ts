@@ -2,7 +2,9 @@ import { z } from "zod"
 
 // Common validation rules
 const commonValidation = {
-    fullName: z.string().optional(),
+    age: z.number(),
+    confirmation: z.boolean(),
+    fullName: z.string(),
     username: z.string().min(4).max(32),
     email: z.string().max(255).email(),
     password: z.string().min(8).max(64),
@@ -13,7 +15,7 @@ const usernameSchema = z
     .string()
     .min(4, "Username must contain at least 4 characters")
     .max(32, "Username cannot exceed 32 characters")
-    .regex(/^[a-zA-Z0-9]+$/, "Username can only contain letters and numbers")
+    .regex(/^[a-z0-9_]+$/, "Username can only contain letters and numbers")
 
 // Common validation rules for email
 const emailSchema = z
@@ -46,14 +48,14 @@ export const signinSchema = z.object({
 })
 
 export const contactSchema = z.object({
-    name: commonValidation.fullName,
+    name: commonValidation.fullName.optional(),
     email: emailSchema,
-    subject: z.string(),
-    message: z.string(),
+    subject: z.string().min(1),
+    message: z.string().min(10).max(2000),
 })
 
 export const userDeletionSchema = z.object({
-    confirmation: z.boolean(),
+    deleteAccount: commonValidation.confirmation,
 })
 
 // Schema for resetting password data validation
@@ -62,7 +64,7 @@ export const resetPasswordSchema = z
         password: commonValidation.password,
         newPassword: passwordSchema,
         confirmPassword: commonValidation.password,
-        logoutFromOtherDevices: z.boolean(),
+        logoutFromOtherDevices: commonValidation.confirmation,
     })
     .refine((data) => data.password === data.confirmPassword, {
         message: "Passwords do not match. Please re-enter your password",
