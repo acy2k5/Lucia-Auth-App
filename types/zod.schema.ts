@@ -21,7 +21,7 @@ const usernameSchema = z
 const emailSchema = z
     .string()
     .max(255)
-    .email("Please enter a valid email address")
+    .email("Invalid email address")
     .refine((email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), {
         message: "Invalid email format",
     })
@@ -36,22 +36,22 @@ const passwordSchema = z
         "Password must contain at least one uppercase letter, one digit, and one special character"
     )
 
-export const signupSchema = z.object({
+export const signupFormSchema = z.object({
     username: usernameSchema,
     email: emailSchema,
     password: passwordSchema,
 })
 
-export const signinSchema = z.object({
+export const signinFormSchema = z.object({
     email: commonValidation.email,
     password: commonValidation.password,
 })
 
-export const contactSchema = z.object({
+export const contactFormSchema = z.object({
     name: commonValidation.fullName.optional(),
     email: emailSchema,
-    subject: z.string().min(1),
-    message: z.string().min(10).max(2000),
+    subject: z.string().min(1).max(100),
+    message: z.string().min(10).max(1000),
 })
 
 export const verificatioinSchema = z.object({
